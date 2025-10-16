@@ -8,13 +8,13 @@ public class EnemyController : MonoBehaviour
     enemi enemigo;
 
     NavMeshAgent agent;
-    private GameObject player;
+    
     private Transform target;
 
     [Header("Configuracion")]//probando jii
     [Tooltip("lista de puntos a seguir el enemigo")]
     [SerializeField] Transform[] waypoints;
-
+    [SerializeField] GameObject player;
     [Header("Patrulla")]
     [SerializeField] public int destinationIndex = 0;
     [SerializeField] float distanceLimit = 5f;
@@ -48,24 +48,13 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void set_tipo()
-    {
-        switch (this.tipo)
-        {
-            case tipoEnemigo.A:
-                enemigo.salud = 3;
-                break;
-            case tipoEnemigo.B:
-                enemigo.salud = 4;
-                break;
-        }
-    }
+ 
     
     public void Patrulla()
     {
         distanceToNextPoint = Vector3.Distance(transform.position, waypoints[destinationIndex].position);
 
-        if (enemigo.tipo == tipo_enemy.B)
+        if (enemigo.tipo == tipoEnemigo.B)
         {
             enemigo.detecto();
         }
@@ -102,8 +91,6 @@ public class EnemyController : MonoBehaviour
             {
                 Transicion();
             }
-
-        
 
     }
 

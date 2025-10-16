@@ -30,7 +30,6 @@ public class Mov_Player : MonoBehaviour
     [HideInInspector] private float anguloCam;
     [HideInInspector] private bool disparando = false;
     [HideInInspector] private bool saltando = false;
-    [HideInInspector] private bool Agachado = false;
 
 
     private void Awake()
@@ -39,6 +38,7 @@ public class Mov_Player : MonoBehaviour
     }
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;//blouque el cursos
     }
 
     void Update()
@@ -62,9 +62,10 @@ public class Mov_Player : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         //Mouse.current.position.ReadValue()
-        rotationinput = Mouse.current.position.ReadValue() * rotationsen * Time.deltaTime;
 
-        anguloCam += rotationinput.y * Time.deltaTime;
+        rotationinput = Mouse.current.delta.ReadValue() * rotationsen * Time.deltaTime;
+
+        anguloCam -= rotationinput.y * Time.deltaTime;
         anguloCam = Mathf.Clamp(anguloCam,-60,60);
 
         transform.Rotate(Vector3.up * rotationinput.x* Time.deltaTime);

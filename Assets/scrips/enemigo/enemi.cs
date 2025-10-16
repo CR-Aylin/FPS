@@ -5,8 +5,6 @@ using UnityEngine;
 public enum estado_enemy
 { Patrull, Persecucion, Transicion }
 
-public enum tipo_enemy
-{ A, B, C }
 
 public class enemi : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class enemi : MonoBehaviour
 
     [Header("Configuracion Enemigo")]//probando jii
     [SerializeField] public estado_enemy estado;
-    [SerializeField] public tipo_enemy tipo;
+    [SerializeField] public tipoEnemigo tipo;
     [SerializeField] public int salud;
     [SerializeField] private int tiempo_inven = 4;
     [SerializeField] private int dura_ataque = 3;
@@ -34,15 +32,16 @@ public class enemi : MonoBehaviour
     
     void Awake()
     {
-       // movimiento = GetComponent<mov_E>();
-        ///player = GameplayManager.instance.GetPlayerGameObject();
+       movimiento = GetComponent<EnemyController>();
+       //player = GameplayManager.instance.GetPlayerGameObject();
         pos_player = GameObject.FindWithTag("Player").transform;
+        set_tipo();
     }
-
+    
     void Start()
     {
         set_estado();
-        //set_tipo();
+        
     }
 
     void Update()
@@ -54,19 +53,29 @@ public class enemi : MonoBehaviour
 
     void set_estado() //asigno estado
     {
-        switch (this.estado)
+        switch (this.tipo)
         {
-            case estado_enemy.Patrull:
-                //movimiento.Patrulla();
+            case 0:
+                movimiento.Patrulla();
                 break;
-            case estado_enemy.Persecucion:
-               //movimiento.Persecucion();
+            case tipoEnemigo.B:
+               movimiento.Persecucion();
                 break;
-            case estado_enemy.Transicion:
-                //movimiento.Persecucion();
-                break;
+
         }
 
+    }
+    void set_tipo()
+    {
+        switch (this.tipo)
+        {
+            case tipoEnemigo.A:
+                this.salud = 3;
+                break;
+            case tipoEnemigo.B:
+                this.salud = 4;
+                break;
+        }
     }
 
 
@@ -124,7 +133,7 @@ public class enemi : MonoBehaviour
             if (other.GetComponent<PlayerController>().isAttacking && !atacando)
             {
                 //Debug.Log("daño ene");
-                if (tipo == tipo_enemy.C)
+                if (tipo == tipoEnemigo.A)
                 {
                     dano();
                     transform.Translate(Vector3.back * retrocede);
@@ -175,7 +184,5 @@ public class enemi : MonoBehaviour
         return false;
 
     }
-
-
 
 }
