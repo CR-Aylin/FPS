@@ -20,6 +20,7 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
+
     public void cambiarArma(int index)
     {
         if (index != ArmasIndex && index >= 0)

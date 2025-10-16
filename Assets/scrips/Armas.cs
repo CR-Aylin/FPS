@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEditorInternal;
 
-[CreateAssetMenu(fileName = "Arma", menuName = "Scriptable Objects/Arma")]
-public class Arma : ScriptableObject
+public class Armas
 {
-    string tipo;
+    bool cooldown;
     int dano;
     int balasIniciales;
     // coordenadas de  la mira 
@@ -15,14 +14,14 @@ public class Arma : ScriptableObject
         switch (tipo)
         {
             case tipoArmas.Pistola:
-                this.tipo = "A";
-                this.dano = 1;
+                cooldown = true;
+                this.dano = 30;
                 this.balasIniciales = 200;
                 break;
             case tipoArmas.Metralleta:
-                this.tipo = "B";
-                this.dano = 1;
+                this.dano = 5;
                 this.balasIniciales = 300;
+                cooldown = false;
                 break;
         }
     }
@@ -30,7 +29,4 @@ public class Arma : ScriptableObject
 }
 
 
-public enum tipoArmas
-{
-    Pistola, Metralleta
-};
+
