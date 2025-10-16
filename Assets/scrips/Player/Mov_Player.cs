@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
+
 [RequireComponent(typeof(CharacterController))]
 public class Mov_Player : MonoBehaviour
 {
     private CharacterController controller;
+    private PlayerWeaponController controllerArma;
     PlayerController player;
     [Header("Referencias")]
     public Camera playercam;
@@ -57,11 +59,6 @@ public class Mov_Player : MonoBehaviour
         input = context.ReadValue<Vector2>();
     }
 
-    public void OnJump(InputAction.CallbackContext context)
-    {
-
-    }
-
     public void OnLook(InputAction.CallbackContext context)
     {
         //Mouse.current.position.ReadValue()
@@ -74,12 +71,4 @@ public class Mov_Player : MonoBehaviour
         playercam.transform.localRotation = Quaternion.Euler(-anguloCam,0f,0f);
     }
 
-    public void Oninteraccion(InputAction.CallbackContext context)
-    {
-
-        
-       //cambiar de armas
-    }
-
-    // direccion de la camara siguiendo mouse
 }
