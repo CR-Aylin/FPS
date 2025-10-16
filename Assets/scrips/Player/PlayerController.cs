@@ -3,22 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    GameObject current_Item;
-    List<GameObject> list;
-
-    void Start()
-    {
-
-    }
-    void Update()
-    {
-
-    }
-
-    void cambio_item()
-    {
-
-    }
+    Mov_Player mov;
+    public Playerstats playerStats;
+    public bool isAttacking = false;
 }
-   
-

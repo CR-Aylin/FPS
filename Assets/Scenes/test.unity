@@ -1080,6 +1080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53fd94399abbbe4ea14527c1b5c4748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
+  isAttacking: 0
 --- !u!114 &736824691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,7 +1099,7 @@ MonoBehaviour:
   Speed: 1
   speedrun: 2
   jumpHeight: 1.5
-  rotationsen: 0.4
+  rotationsen: 15
 --- !u!114 &736824692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,6 +2619,7 @@ GameObject:
   - component: {fileID: 2092403457}
   - component: {fileID: 2092403456}
   - component: {fileID: 2092403455}
+  - component: {fileID: 2092403461}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -2636,7 +2639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df32e6083e093c041aefacf7934661ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 5
   waypoints:
   - {fileID: 1935121976}
   - {fileID: 1377656692}
@@ -2649,8 +2651,9 @@ MonoBehaviour:
   - {fileID: 1276716779}
   - {fileID: 1764112041}
   destinationIndex: 0
-  tipo: 0
-  vida: 10
+  distanceLimit: 5
+  limite: 5
+  maxFollowDistance: 5
 --- !u!195 &2092403456
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2764,6 +2767,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2092403461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092403454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1054e0092e65fb94b91398a237ae88a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estado: 0
+  tipo: 0
+  salud: 0
+  tiempo_inven: 4
+  dura_ataque: 3
+  distanAtaque: 3
+  distandetec: 4
+  retrocede: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
