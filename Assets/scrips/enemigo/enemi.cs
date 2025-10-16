@@ -63,7 +63,6 @@ public class enemi : MonoBehaviour
                 break;
 
         }
-
     }
     void set_tipo()
     {
